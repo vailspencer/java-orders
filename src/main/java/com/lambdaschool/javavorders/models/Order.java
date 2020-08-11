@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "orders")
-public class Orders
+public class Order
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,30 +17,30 @@ public class Orders
 
     @ManyToOne
     @JoinColumn(name = "custcode",nullable = false)
-    private Customers customer;
+    private Customer customer;
     private String orderdescription;
 
     @ManyToMany()
     @JoinTable(name = "orderspayments",
         joinColumns = @JoinColumn(name = "ordnum"),
         inverseJoinColumns = @JoinColumn(name = "paymentid"))
-    private Set<Payments> payments = new HashSet<>();
+    private Set<Payment> payments = new HashSet<>();
 
 
 
-    public Orders()
+    public Order()
     {
     }
 
-    public Orders(
+    public Order(
         double ordamount,
         double advanceamount,
-        Customers customers,
+        Customer customer,
         String orderdescription)
     {
         this.ordamount = ordamount;
         this.advanceamount = advanceamount;
-        this.customer = customers;
+        this.customer = customer;
         this.orderdescription = orderdescription;
     }
 
@@ -64,14 +64,14 @@ public class Orders
         return advanceamount;
     }
 
-    public Customers getCustomers()
+    public Customer getCustomers()
     {
         return customer;
     }
 
-    public void setCustomers(Customers customers)
+    public void setCustomers(Customer customer)
     {
-        this.customer = customers;
+        this.customer = customer;
     }
 
     public String getOrderdescription()
@@ -82,7 +82,7 @@ public class Orders
     @Override
     public String toString()
     {
-        return "Orders{" +
+        return "Order{" +
             "ordnum=" + ordnum +
             ", ordamount=" + ordamount +
             ", advanceamount=" + advanceamount +

@@ -1,8 +1,8 @@
 package com.lambdaschool.javavorders.services;
 
-import com.lambdaschool.javavorders.models.Customers;
+import com.lambdaschool.javavorders.models.Customer;
 
 public interface CustomersService
 {
-    Customers save(Customers customers);
+    Customer save(Customer customer);
 }

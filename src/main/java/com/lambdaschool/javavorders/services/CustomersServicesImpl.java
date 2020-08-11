@@ -1,6 +1,6 @@
 package com.lambdaschool.javavorders.services;
 
-import com.lambdaschool.javavorders.models.Customers;
+import com.lambdaschool.javavorders.models.Customer;
 import com.lambdaschool.javavorders.repositories.CustomersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,8 +10,8 @@ public class CustomersServicesImpl implements CustomersService
     private CustomersRepository customersrepos;
 
     @Override
-    public Customers save(Customers customers)
+    public Customer save(Customer customer)
     {
-        return null;
+        return customersrepos.save(customer);
     }
 }

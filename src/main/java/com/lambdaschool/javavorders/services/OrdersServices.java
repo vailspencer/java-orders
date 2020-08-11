@@ -1,8 +1,8 @@
 package com.lambdaschool.javavorders.services;
 
-import com.lambdaschool.javavorders.models.Orders;
+import com.lambdaschool.javavorders.models.Order;
 
 public interface OrdersServices
 {
-    Orders save(Orders orders);
+    Order save(Order order);
 }

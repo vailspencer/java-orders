@@ -1,8 +1,8 @@
 package com.lambdaschool.javavorders.services;
 
-import com.lambdaschool.javavorders.models.Agents;
+import com.lambdaschool.javavorders.models.Agent;
 
 public interface AgentsService
 {
-    Agents save (Agents agents);
+    Agent save (Agent agent);
 }

@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "payments")
-public class Payments
+public class Payment
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,13 +16,13 @@ public class Payments
     private String type;
 
     @ManyToMany(mappedBy = "payments")
-    private Set<Orders> orders = new HashSet<>();
+    private Set<Order> orders = new HashSet<>();
 
-    public Payments()
+    public Payment()
     {
     }
 
-    public Payments(String type)
+    public Payment(String type)
     {
         this.type = type;
     }

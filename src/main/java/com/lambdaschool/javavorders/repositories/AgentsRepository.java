@@ -1,8 +1,8 @@
 package com.lambdaschool.javavorders.repositories;
 
-import com.lambdaschool.javavorders.models.Agents;
+import com.lambdaschool.javavorders.models.Agent;
 import org.springframework.data.repository.CrudRepository;
 
-public interface AgentsRepository extends CrudRepository<Agents, Long>
+public interface AgentsRepository extends CrudRepository<Agent, Long>
 {
 }

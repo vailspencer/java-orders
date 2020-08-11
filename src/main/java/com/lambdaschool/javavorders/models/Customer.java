@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "customers")
-public class Customers
+public class Customer
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,6 +19,7 @@ public class Customers
     private String workingarea;
     private String custcountry;
     private String grade;
+    private String phone;
     private double openingamt;
     private double receiveamt;
     private double paymentamt;
@@ -26,24 +27,25 @@ public class Customers
 
     @ManyToOne
     @JoinColumn(name = "agentcode", nullable = false)
-    private Agents agents;
+    private Agent agent;
 
     @OneToMany(mappedBy = "customer",
     cascade = CascadeType.ALL,
     orphanRemoval = true)
-    private Set<Orders> orders = new HashSet<>();
+    private Set<Order> orders = new HashSet<>();
 
 
-    public Customers()
+    public Customer()
     {
     }
 
-    public Customers(
+    public Customer(
         String custname,
         String custcity,
         String workingarea,
         String custcountry,
         String grade,
+        String phone,
         double openingamt,
         double receiveamt,
         double paymentamt,
@@ -54,10 +56,21 @@ public class Customers
         this.workingarea = workingarea;
         this.custcountry = custcountry;
         this.grade = grade;
+        this.phone = phone;
         this.openingamt = openingamt;
         this.receiveamt = receiveamt;
         this.paymentamt = paymentamt;
         this.outstandingamt = outstandingamt;
+    }
+
+    public String getPhone()
+    {
+        return phone;
+    }
+
+    public void setPhone(String phone)
+    {
+        this.phone = phone;
     }
 
     public String getCustname()
@@ -153,7 +166,7 @@ public class Customers
     @Override
     public String toString()
     {
-        return "Customers{" +
+        return "Customer{" +
             "custcode=" + custcode +
             ", custname='" + custname + '\'' +
             ", custcity='" + custcity + '\'' +

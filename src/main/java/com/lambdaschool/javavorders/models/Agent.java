@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "agents")
-public class Agents
+public class Agent
 {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
@@ -19,16 +19,16 @@ public class Agents
     private String phone;
     private String country;
 
-    @OneToMany(mappedBy = "agents",
+    @OneToMany(mappedBy = "agent",
     cascade = CascadeType.ALL,
     orphanRemoval = true)
-    private Set<Customers> customers = new HashSet<>();
+    private Set<Customer> customers = new HashSet<>();
 
-    public Agents()
+    public Agent()
     {
     }
 
-    public Agents(
+    public Agent(
         String agentname,
         String workingarea,
         double commission,
@@ -95,7 +95,7 @@ public class Agents
     @Override
     public String toString()
     {
-        return "Agents{" +
+        return "Agent{" +
             "agentcode=" + agentcode +
             ", agentname='" + agentname + '\'' +
             ", workingarea='" + workingarea + '\'' +
