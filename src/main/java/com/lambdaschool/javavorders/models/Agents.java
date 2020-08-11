@@ -1,6 +1,8 @@
 package com.lambdaschool.javavorders.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "agents")
@@ -16,6 +18,11 @@ public class Agents
     private double commission;
     private String phone;
     private String country;
+
+    @OneToMany(mappedBy = "agents",
+    cascade = CascadeType.ALL,
+    orphanRemoval = true)
+    private Set<Customers> customers = new HashSet<>();
 
     public Agents()
     {

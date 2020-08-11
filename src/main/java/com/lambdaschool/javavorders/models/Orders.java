@@ -1,6 +1,8 @@
 package com.lambdaschool.javavorders.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "orders")
@@ -15,6 +17,11 @@ public class Orders
     private double advanceamount;
     private long custcode;
     private String orderdescription;
+
+    @ManyToMany(mappedBy = "paymets")
+    private Set<Orders> orders = new HashSet<>();
+
+
 
     public Orders()
     {

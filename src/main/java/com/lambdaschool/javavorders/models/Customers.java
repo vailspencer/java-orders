@@ -1,6 +1,10 @@
 package com.lambdaschool.javavorders.models;
 
+import org.aspectj.weaver.loadtime.Agent;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "customers")
@@ -21,6 +25,15 @@ public class Customers
     private double receiveamt;
     private double paymentamt;
     private double outstandingamt;
+
+    @ManyToOne
+    @JoinColumn(name = "agentcode", nullable = false)
+    private Agent agent;
+
+    @OneToMany(mappedBy = "customer",
+    cascade = CascadeType.ALL,
+    orphanRemoval = true)
+    private Set<Orders> orders = new HashSet<>();
 
 
     public Customers()
