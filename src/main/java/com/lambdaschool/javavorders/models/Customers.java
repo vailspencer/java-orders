@@ -1,7 +1,5 @@
 package com.lambdaschool.javavorders.models;
 
-import org.aspectj.weaver.loadtime.Agent;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,7 +26,7 @@ public class Customers
 
     @ManyToOne
     @JoinColumn(name = "agentcode", nullable = false)
-    private Agent agent;
+    private Agents agents;
 
     @OneToMany(mappedBy = "customer",
     cascade = CascadeType.ALL,

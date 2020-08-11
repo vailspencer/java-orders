@@ -1,6 +1,8 @@
 package com.lambdaschool.javavorders.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "payments")
@@ -10,7 +12,11 @@ public class Payments
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private long paymentid;
+    @Column(nullable = false)
     private String type;
+
+    @ManyToMany(mappedBy = "payments")
+    private Set<Orders> orders = new HashSet<>();
 
     public Payments()
     {

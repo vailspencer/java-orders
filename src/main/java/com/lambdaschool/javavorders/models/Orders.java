@@ -12,14 +12,19 @@ public class Orders
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false)
     private long ordnum;
-
     private double ordamount;
     private double advanceamount;
-    private long custcode;
+
+    @ManyToOne
+    @JoinColumn(name = "custcode",nullable = false)
+    private Customers customer;
     private String orderdescription;
 
-    @ManyToMany(mappedBy = "paymets")
-    private Set<Orders> orders = new HashSet<>();
+    @ManyToMany()
+    @JoinTable(name = "orderspayments",
+        joinColumns = @JoinColumn(name = "ordnum"),
+        inverseJoinColumns = @JoinColumn(name = "paymentid"))
+    private Set<Payments> payments = new HashSet<>();
 
 
 
@@ -30,13 +35,23 @@ public class Orders
     public Orders(
         double ordamount,
         double advanceamount,
-        long custcode,
+        Customers customers,
         String orderdescription)
     {
         this.ordamount = ordamount;
         this.advanceamount = advanceamount;
-        this.custcode = custcode;
+        this.customer = customers;
         this.orderdescription = orderdescription;
+    }
+
+    public long getOrdnum()
+    {
+        return ordnum;
+    }
+
+    public void setOrdnum(long ordnum)
+    {
+        this.ordnum = ordnum;
     }
 
     public double getOrdamount()
@@ -49,9 +64,14 @@ public class Orders
         return advanceamount;
     }
 
-    public long getCustcode()
+    public Customers getCustomers()
     {
-        return custcode;
+        return customer;
+    }
+
+    public void setCustomers(Customers customers)
+    {
+        this.customer = customers;
     }
 
     public String getOrderdescription()
@@ -66,7 +86,7 @@ public class Orders
             "ordnum=" + ordnum +
             ", ordamount=" + ordamount +
             ", advanceamount=" + advanceamount +
-            ", custcode=" + custcode +
+            //", custcode=" + custcode +
             ", orderdescription='" + orderdescription + '\'' +
             '}';
     }
