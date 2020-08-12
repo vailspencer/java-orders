@@ -10,13 +10,13 @@ A student that completes this project shows that they can:
 
 ## Introduction
 
-This is a basic database scheme with customers, orders, and sales agents. This Java Spring REST API application will provide the data modeling to support the application. This is part 1 of a 3 part application series.
+This is a basic database scheme with customer, order, and sales agent. This Java Spring REST API application will provide the data modeling to support the application. This is part 1 of a 3 part application series.
 
 ### Database layout
 
 The table layouts are as follows
 
-![Image of Database Layout](java-orders-db.png)
+![Image of Database Layout](java-order-db.png)
 
 * AGENTS
   * AGENTCODE primary key, not null Long
@@ -38,13 +38,13 @@ The table layouts are as follows
   * PAYMENTAMT double
   * OUTSTANDINGAMT double
   * PHONE String
-  * AGENTCODE Long foreign key (one agent to many customers) not null
+  * AGENTCODE Long foreign key (one agent to many customer) not null
 
 * ORDERS
   * ORDNUM primary key, not null Long
   * ORDAMOUNT double
   * ADVANCEAMOUNT double
-  * CUSTCODE Long foreign key (one customer to many orders) not null
+  * CUSTCODE Long foreign key (one customer to many order) not null
   * ORDERDESCRIPTION String
 
 * PAYMENTS
@@ -63,8 +63,8 @@ The table layouts are as follows
   * Orders has a Many to One relationship to Customers and
   * Customers has a One to Many relationship to Orders
 
-* Orders has a many to many relationship with payments
-  * multiple orders can use the same payment type and an order can have multiple payment types.
+* Orders has a many to many relationship with payment
+  * multiple order can use the same payment type and an order can have multiple payment types.
   * For example, you can use both gift card and credit card to pay for an order.
 
 ### MVP and Stretch Goal
@@ -86,9 +86,9 @@ The database will be available from the H2 Console. Each table will contain the 
 ### Stretch Goal
 
 * [ ] Implement Javafaker
-  * [ ] Create around 100 new customers
+  * [ ] Create around 100 new customer
   * [ ] Randomize as much of the data as possible
-  * [ ] You can assign all new customers to the same agent
-  * [ ] Randomly assign 0 - 10 orders to each customer
+  * [ ] You can assign all new customer to the same agent
+  * [ ] Randomly assign 0 - 10 order to each customer
     * [ ] Randomize as much of the data as possible
-    * [ ] All orders can be of the same payment type
+    * [ ] All order can be of the same payment type

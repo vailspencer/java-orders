@@ -2,6 +2,9 @@ DELETE
 FROM orders;
 
 DELETE
+FROM payments;
+
+DELETE
 FROM customers;
 
 DELETE
